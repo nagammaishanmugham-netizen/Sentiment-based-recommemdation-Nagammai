@@ -73,7 +73,7 @@ def index():
     if request.method == "POST":
         username = request.form.get("username")
 
-       recommendations = recommend_top_5(username)
+       recommendations = recommend_top_5("username")
 
        if recommendations is None or len(recommendations) == 0:
           error = "No recommendations available for this user."
