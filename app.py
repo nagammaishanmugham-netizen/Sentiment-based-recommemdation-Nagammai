@@ -11,8 +11,7 @@ app = Flask(__name__)
 # Load trained models
 # -------------------------------------------------
 sentiment_model = pickle.load(open('pickle_file/final_model.pkl', 'rb'))
-count_vectorizer = pickle.load(open('pickle_file/count_vector.pkl', 'rb'))
-tfidf_transformer = pickle.load(open('pickle_file/tfidf_transformer.pkl', 'rb'))
+tfidf_pipeline = pickle.load(open("pickle_file/tfidf_pipeline.pkl", "rb"))
 user_final_rating = pickle.load(open('pickle_file/user_final_rating.pkl', 'rb'))
 
 # -------------------------------------------------
@@ -41,8 +40,7 @@ def recommend_top_5(username):
         if reviews.empty:
             continue
 
-        X_counts = count_vectorizer.transform(reviews)
-        X_tfidf = tfidf_transformer.transform(X_counts)
+        X_tfidf = tfidf_pipeline.transform(reviews)
         predictions = sentiment_model.predict(X_tfidf)
 
         positive_ratio = (predictions == 1).mean()
