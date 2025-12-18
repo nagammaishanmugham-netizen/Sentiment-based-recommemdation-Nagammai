@@ -83,6 +83,11 @@ def index():
         error=error
     )
 
+popular_products = pickle.load(
+    open("pickle_file/popular_products.pkl", "rb")
+)
+
+
 # -----------------------------
 # Run app
 # -----------------------------
