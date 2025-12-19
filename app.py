@@ -3,6 +3,8 @@ import pickle
 import pandas as pd
 import os
 
+print("🚀 App starting...")
+
 # -------------------------------------------------
 # Create Flask app
 # -------------------------------------------------
@@ -14,6 +16,8 @@ app = Flask(__name__)
 sentiment_model = pickle.load(open("pickle_file/final_model.pkl", "rb"))
 tfidf_pipeline = pickle.load(open("pickle_file/tfidf_pipeline.pkl", "rb"))
 user_final_rating = pickle.load(open("pickle_file/user_final_rating.pkl", "rb"))
+
+print("✅ Models loaded")
 
 # -------------------------------------------------
 # Load dataset
